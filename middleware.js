@@ -12,12 +12,18 @@ export function validation(req, res, next) {
         error.statusCode = 400
         return next(error)
     }
-    if (!table || isNaN(+table) ||  +table <= 0 || +table > 99) {
+    if (!table || isNaN(+table) || +table <= 0 || +table > 99) {
         const error = new Error("valid table is missing")
         error.statusCode = 400
         return next(error)
-    }
-    if (!status || typeof status !== "string" || status.trim() === "") {
+    } const statuses = [
+        "NEW",
+        "PREPARING",
+        "READY",
+        "DELIVERED",
+        "CANCELLED"
+    ];
+    if (!status || typeof status !== "string" || status.trim() === "" || !statuses.includes(status.toUpperCase())) {
         const error = new Error("valid status is missing")
         error.statusCode = 400
         return next(error)
@@ -33,11 +39,16 @@ export function validation(req, res, next) {
 }
 
 export async function checkId(req, res, next) {
-    const orders = await getAllOrders()
-    const check = orders.find(o => o.orderId === +req.body.orderId)
-    if (check) {
-        const error = new Error("orderId is already in use. please choose another id")
-        error.statusCode = 422
-        return next(error)
-    } next()
+    try {
+        const orders = await getAllOrders();
+        const check = orders.find(o => o.orderId === +req.body.orderId)
+        if (check) {
+            const error = new Error("orderId is already in use. please choose another id");
+            error.statusCode = 422;
+            return next(error);
+        } next();
+    } catch (error) {
+        next(error);
+
+    }
 }

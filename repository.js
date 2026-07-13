@@ -8,5 +8,5 @@ export async function readFile(){
 }
 export async function writeFile(orders){
     
-   return await fs.writeFile(path, JSON.stringify(orders))
+   return await fs.writeFile(path, JSON.stringify(orders, null, 2))
 }

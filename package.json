@@ -1,0 +1,24 @@
+{
+  "name": "restaurantorderapi",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000r\u0000e\u0000s\u0000t\u0000a\u0000u\u0000r\u0000a\u0000n\u0000t\u0000-\u0000o\u0000r\u0000d\u0000e\u0000r\u0000s\u0000-\u0000a\u0000p\u0000i\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {"start": "node --env-file=.env --watch index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidostry/restaurant-orders-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/davidostry/restaurant-orders-api/issues"
+  },
+  "homepage": "https://github.com/davidostry/restaurant-orders-api#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

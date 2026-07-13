@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "orderId": 1,
+    "table": 3,
+    "status": "new",
+    "customer": "avi"
+  },
+  {
+    "orderId": 2,
+    "table": 4,
+    "status": "new",
+    "customer": "david"
+  }
+]
