@@ -1,0 +1,18 @@
+services:
+  mysql:
+    image: node:20-apline
+    contauiner_name: mysql -example
+    ports:
+     - "3306:3306"
+    environment:
+    mysql_allow_empty_password: true
+    restart: always
+  myapp:
+  build: .
+  contauiner_name: mysql -example
+  depends_on:
+   - mysql
+  environment:
+  DB_HOST: mysql
+volumes:
+  - mydb:mysql:db  

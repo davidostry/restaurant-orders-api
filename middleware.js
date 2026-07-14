@@ -6,7 +6,7 @@ export function logger(req, res, next) {
 }
 
 export function validation(req, res, next) {
-    const { orderId, table, status, customer } = req.body
+    const { orderId, table, customer } = req.body
     if (!orderId || isNaN(+orderId)) {
         const error = new Error("valid orderId is missing")
         error.statusCode = 400
@@ -14,17 +14,6 @@ export function validation(req, res, next) {
     }
     if (!table || isNaN(+table) || +table <= 0 || +table > 99) {
         const error = new Error("valid table is missing")
-        error.statusCode = 400
-        return next(error)
-    } const statuses = [
-        "NEW",
-        "PREPARING",
-        "READY",
-        "DELIVERED",
-        "CANCELLED"
-    ];
-    if (!status || typeof status !== "string" || status.trim() === "" || !statuses.includes(status.toUpperCase())) {
-        const error = new Error("valid status is missing")
         error.statusCode = 400
         return next(error)
 
@@ -51,4 +40,26 @@ export async function checkId(req, res, next) {
         next(error);
 
     }
+}
+
+export function validId(req, res, next){
+    const { id } = req.params
+    if (!id || isNaN(+id) || +id < 0){
+        const error = new Error("orderId is not valid")
+        error.statusCode = 400
+        return next(error)
+    }
+    next()
+
+}
+
+export function validStatus(req, res, next){
+    const { status } = req.body
+    const statuses = ["NEW", "PREPARING", "READY", "DELIVERED", "CANCELLED"]
+    if (!status || !statuses.includes(status.toUpperCase()) ){
+        const error = new Error("status is not valid")
+        error.statusCode = 400
+        return next(error)
+    }
+    next()
 }

@@ -1,0 +1,13 @@
+FROM node:20-alpine
+
+workdir / my-appnpm
+
+copy package*.json /my-app
+
+run npm install
+
+copy . /my-app
+
+expose 3000
+
+cmd ["node", "index.js"]

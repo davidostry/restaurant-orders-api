@@ -1,14 +1,20 @@
 [
   {
     "orderId": 1,
-    "table": 3,
+    "table": 6,
     "status": "new",
     "customer": "avi"
   },
   {
-    "orderId": 2,
+    "orderId": 5,
     "table": 4,
     "status": "new",
     "customer": "david"
+  },
+  {
+    "orderId": 8,
+    "table": 6,
+    "status": "CANCELLED",
+    "customer": "avi"
   }
 ]
